@@ -1,0 +1,11 @@
+{
+  "name": "sockets-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Dawerx",
+  "license": "ISC"
+}
