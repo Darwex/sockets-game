@@ -1,0 +1,33 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "globals": {
+    "__DEV__": false,
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  },
+  "env": {
+    "node": true,
+    "es6": true,
+    "jasmine": true,
+    "jest": true
+  },
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": 0
+      }
+    ],
+    "func-names": [
+      "warn",
+      "never"
+    ]
+  }
+}
