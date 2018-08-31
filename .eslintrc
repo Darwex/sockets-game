@@ -18,13 +18,11 @@
     "jest": true
   },
   "rules": {
-    "indent": [
-      "error",
-      2,
-      {
-        "MemberExpression": 0
-      }
-    ],
+
+    "semi": ["warn", "never"],
+    "semi-style": ["warn", "first"],
+    "semi-spacing": ["warn", { "before": false, "after": true }],
+    "indent": ["error", 2, { "MemberExpression": 0 }],
     "func-names": [
       "warn",
       "never"
