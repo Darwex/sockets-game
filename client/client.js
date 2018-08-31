@@ -46,8 +46,8 @@ const Map = (canvas = Canvas()
     canvas.renderView(this.parsedMap, this.view)
   }
 
-  const moveViewRight = () => moveView(10)
-  const moveViewLeft = () => moveView(-10)
+  const moveViewRight = () => moveView(30)
+  const moveViewLeft = () => moveView(-30)
 
   const parseWorldMap = (worldMap = []) => {
     const mapXBlockCount = worldMap[0] ? worldMap[0].length : 0
@@ -93,10 +93,10 @@ const Canvas = (utils = Utils()) => {
     canvas.height = window.innerHeight
     renderBackground()
   }
-  const renderBlock = block => {
+  const renderBlock = (block, view) => {
     ctx.fillStyle = 'red'
     ctx.font = `50px Verdana`
-    ctx.fillText(block.blockType, block.x, block.y)
+    ctx.fillText(block.blockType, block.x - view.x, block.y)
   }
 
 
@@ -104,7 +104,7 @@ const Canvas = (utils = Utils()) => {
     console.log(parsedMap, view)
     parsedMap.forEach(block => {
       if (utils.intersect(block, view)) {
-        renderBlock(block)
+        renderBlock(block, view)
       }
     })
   }
