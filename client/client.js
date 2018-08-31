@@ -33,8 +33,8 @@ const Map = (canvas = Canvas()
   this.view = {
     x: 0,
     y: 0,
-    width: canvas.getDimensions().width,
-    height: canvas.getDimensions().height
+    width: 400,
+    height: 510
   }
 
   canvas.renderViewCoordsBox(this.view)
@@ -44,6 +44,7 @@ const Map = (canvas = Canvas()
     canvas.renderBackground()
     canvas.renderViewCoordsBox(this.view)
     canvas.renderView(this.parsedMap, this.view)
+    canvas.renderViewRectangle(this.view)
   }
 
   const moveViewRight = () => moveView(10)
@@ -75,6 +76,7 @@ const Map = (canvas = Canvas()
 
   this.parsedMap = parseWorldMap(worldMap)
   canvas.renderView(this.parsedMap, this.view)
+  canvas.renderViewRectangle(this.view)
 
 
   return {
@@ -109,6 +111,14 @@ const Canvas = (utils = Utils()) => {
     })
   }
 
+  const renderViewRectangle = view => {
+    ctx.beginPath()
+    ctx.rect(view.x, view.y, view.width, view.height)
+    ctx.lineWidth = 7
+    ctx.strokeStyle = 'red'
+    ctx.stroke()
+  }
+
   const renderViewCoordsBox = view => {
     ctx.fillStyle = 'red'
     ctx.font = `20px Verdana`
@@ -131,6 +141,7 @@ const Canvas = (utils = Utils()) => {
     rescale,
     renderView,
     renderBackground,
+    renderViewRectangle,
     getDimensions,
     renderBlock,
     renderViewCoordsBox
