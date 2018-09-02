@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
+const path = require('path')
 
 app.get('/', function (req, res) {
-  res.sendFile('/Users/vrsek/Documents/sockets-game/client/index.html')
+  const indexFilePath = path.resolve('client/index.html')
+  res.sendFile(indexFilePath)
 })
 app.use(express.static('node_modules'))
 app.use(express.static('client'))
