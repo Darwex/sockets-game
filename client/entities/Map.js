@@ -13,6 +13,13 @@ class Map {
       viewMaxX: 0
     }
     this.parsedMap = this.parseMap(mapModel)
+    setInterval(() => {
+      const stepSize = 10
+      let stepDirection = 1
+      let normalizedStep = stepSize * stepDirection
+      if((this.view.x + this.view.width + normalizedStep) <= this.view.viewMaxX) return this.view.x += normalizedStep
+ 
+    }, 1000/60)
   }
 
   getSizeMultiplicator = () => {
