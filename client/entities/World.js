@@ -1,10 +1,13 @@
 'use strict'
 
+import { Canvas } from './Canvas'
+import { Map } from './Map'
+import { Player } from './Player'
 
 // C - Cloud
 // G - Ground
 
-const worldMap = [
+const exampleWorldMap = [
   ['-', '-', '-', '-', '-', 'C', '-', '-', '-', '-', 'C', '-', '-', '-', '-', '-', '-', '-', '-', '-', 'C', '-', '-', '-', '-', '-', '-', '-', '-', 'C', '-', '-', '-', '-', '-'],
   ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
   ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
@@ -15,45 +18,45 @@ const worldMap = [
   ['G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G']
 ]
 
+
 class World {
 
-  constructor () {
-    this.canvas = Canvas()
-    this.map = Map()
-    this.player = Player()
+  constructor (canvas = new Canvas()) {
 
+    this.canvas = canvas
     this.gameState = {
-      ma: this.map,
-      player: this.player,
+      map: new Map(exampleWorldMap, canvas.getDimensions())
+      // player: new Player(),
     }
+
+    // this.gameState.entities.push(new Player())
   }
 
-  setUpEventListeners() {
-    // global events
-    window.addEventListener('resize', canvas.rescale)
-    document.addEventListener('keydown', e => {
-      // right
-      if (e.keyCode === 39) {
-        map.moveViewRight()
-      }
-      //left
-      if (e.keyCode === 37) {
-        map.moveViewLeft()
-      }
-    })
-  }
+  // Responsibility of event emitter
+  // setUpEventListeners() {
+  //   // global events
+  //   window.addEventListener('resize', canvas.rescale)
+  //   document.addEventListener('keydown', e => {
+  //     // right
+  //     if (e.keyCode === 39) {
+  //       map.moveViewRight()
+  //     }
+  //     //left
+  //     if (e.keyCode === 37) {
+  //       map.moveViewLeft()
+  //     }
+  //   })
+  // }
 
   gameLoop() {
-    canvas.render(gameState)
+    this.xwcanvas.renderFrame()
     requestAnimationFrame(gameLoop)
   }
 
   startGame() {
-    setUpEventListeners()
-    canvas.rescale()
+    // setUpEventListeners()
     requestAnimationFrame(gameLoop)
   }
-
 }
 
 export {

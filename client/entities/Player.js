@@ -10,3 +10,7 @@ const Player = (canvas = Canvas()) => {
     render
   }
 }
+
+export {
+  Player
+}
