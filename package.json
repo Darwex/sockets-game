@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "start": "node app.js",
-    "webpack": "webpack"
+    "build": "webpack --mode=production",
+    "webpack-watch": "webpack --mode=development --watch"
   },
   "author": "Dawerx",
   "license": "ISC",
@@ -17,5 +18,8 @@
     "jquery": "^3.3.1",
     "socket.io": "^2.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  }
 }

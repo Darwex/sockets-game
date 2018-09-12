@@ -49,7 +49,7 @@ class World {
   // }
 
   gameLoop() {
-    this.xwcanvas.renderFrame()
+    this.canvas.renderFrame()
     requestAnimationFrame(gameLoop)
   }
 

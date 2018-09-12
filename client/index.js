@@ -2,7 +2,6 @@
 
 import { World } from './entities/World'
 
-
 const assets = [
   {
     name: 'ground',
@@ -26,24 +25,6 @@ const assets = [
   }
 ]
 
-const Utils = () => {
-
-  const intersect = (a, b, offset = 0) => (
-    a.x < b.x + b.width + offset &&
-    a.x + a.width + offset > b.x &&
-    a.y < b.y + b.height + offset &&
-    a.height + offset + a.y > b.y
-  )
-
-  // In case that block would be 1px off visible
-  const viewIntersect = (a, b) => intersect(a, b, 1)
-
-  return {
-    intersect,
-    viewIntersect
-  }
-}
-
 window.onload = () => {
 
   assets.map(asset => {
@@ -56,8 +37,6 @@ window.onload = () => {
 
   // Hack to wait for all images to be loaded :-X
   const world = new World()
-  console.log(world)
-  world.startGame()
   setTimeout(world.startGame, 500)
 }
 
