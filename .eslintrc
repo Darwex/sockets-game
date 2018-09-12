@@ -19,7 +19,6 @@
     "jest": true
   },
   "rules": {
-
     "semi": ["warn", "never"],
     "semi-style": ["warn", "first"],
     "semi-spacing": ["warn", { "before": false, "after": true }],
@@ -27,6 +26,10 @@
     "func-names": [
       "warn",
       "never"
-    ]
-  }
+    ],
+    "babel/no-invalid-this": 1
+  },
+  "plugins": [
+    "babel"
+  ]
 }

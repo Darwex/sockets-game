@@ -1,6 +1,9 @@
 class Map {
+  parsedMap = null
+  canvasDimensions = null
+  view = null
+
   constructor (mapModel, canvasDimensions) {
-    this.parsedMap = this.parseMap(mapModel)
     this.canvasDimensions = canvasDimensions
     this.view = {
       x: 0,
@@ -9,13 +12,14 @@ class Map {
       height: canvasDimensions.height,
       viewMaxX: 0
     }
+    this.parsedMap = this.parseMap(mapModel)
   }
 
-  getSizeMultiplicator() {
+  getSizeMultiplicator = () => {
     return (1 + Math.random())
   }
 
-  parseMap(worldMap = []) {
+  parseMap = (worldMap = []) => {
     const mapXBlockCount = worldMap[0] ? worldMap[0].length : 0
     const mapYBlockCount = worldMap.length
 
@@ -41,9 +45,8 @@ class Map {
     return parsedMap
   }
 
-  getParsedMap() {
-    return this.parsedMap
-  }
+  getParsedMap = () => this.parsedMap
+  getView = () => this.view
 
 
   // render() {

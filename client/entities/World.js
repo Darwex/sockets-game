@@ -22,10 +22,9 @@ const exampleWorldMap = [
 class World {
 
   constructor (canvas = new Canvas()) {
-
     this.canvas = canvas
     this.gameState = {
-      map: new Map(exampleWorldMap, canvas.getDimensions())
+      map: new Map(exampleWorldMap, this.canvas.getDimensions())
       // player: new Player(),
     }
 
@@ -48,14 +47,14 @@ class World {
   //   })
   // }
 
-  gameLoop() {
-    this.canvas.renderFrame()
-    requestAnimationFrame(gameLoop)
+  gameLoop = () =>  {
+    this.canvas.renderFrame(this.gameState)
+    requestAnimationFrame(this.gameLoop)
   }
 
-  startGame() {
+  startGame = () => {
     // setUpEventListeners()
-    requestAnimationFrame(gameLoop)
+    requestAnimationFrame(this.gameLoop)
   }
 }
 
